@@ -1,0 +1,26 @@
+@mixin button($bg-btn,$color-txt-btn,$color-bg-hover,$color-bg-active,$font-weight){
+    width: 100%;
+    height: 3rem;
+    padding: .5rem;
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: $font-weight;
+    text-transform: capitalize;
+    color: $color-txt-btn;
+    background:$bg-btn ;
+    border-radius: 15px;
+    border:none;
+    box-shadow: none;
+    box-shadow: 8px 10px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.1s ease-in;
+    cursor: pointer;
+    
+    &:hover{
+        background:$color-bg-hover;
+        box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.3);
+    }
+    &:active{
+        background: $color-bg-active;
+        box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.4)
+    }
+}
