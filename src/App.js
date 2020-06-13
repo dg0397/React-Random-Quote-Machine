@@ -1,6 +1,5 @@
 import React from 'react';
 import './styles/styles.scss';
-<<<<<<< HEAD
 import Main from './components/Main';
 import Data from './components/util/Data';
 import styles from "./styles";
@@ -30,14 +29,6 @@ class App extends React.Component {
       <Main quotes={this.state.quotes}  colorGenerator = {this.randomColor}/>
     )
   }
-=======
-import Main from './App/Main';
-
-function App() {
-  return (
-    <Main />
-  );
->>>>>>> c0b5b370eb64aac5a4ce3b40adb75e9c72fb9dd9
 }
 
 export default App;
