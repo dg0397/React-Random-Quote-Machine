@@ -10,40 +10,27 @@ body{
     height: 100vh;
     display: flex;
     justify-content: center;
-<<<<<<< HEAD
     min-width: 320px;
     margin: 3rem auto 0 auto;
     @media screen and(min-width:620px){
         align-items: center;
         margin: 0 auto 0 auto;
     }
-=======
-    align-items: center;
->>>>>>> c0b5b370eb64aac5a4ce3b40adb75e9c72fb9dd9
 }
 
 #quote-box{
     margin: 0 auto;
-<<<<<<< HEAD
     padding: 1rem 1.5rem;
     width: 80%;
     max-width: 400px;
     background: rgba(255, 255, 255, .9);
     border-radius: 25px;
     color: $dark-purple;
-=======
-    padding: 1.5rem 2rem;
-    width: 80%;
-    max-width: 500px;
-    background: rgba(255, 255, 255, .9);
-    border-radius: 25px;
->>>>>>> c0b5b370eb64aac5a4ce3b40adb75e9c72fb9dd9
     .text-box{
         margin-bottom: 1.5rem;
         #text{
             text-align: center;
             margin-bottom: 1rem;
-<<<<<<< HEAD
             font-size: 1.75rem;
             font-family: $font-heading;
             font-weight: 700;
@@ -55,20 +42,11 @@ body{
         #author{
             text-align: right;
             font-family: $font-body
-=======
-            font-size: 2rem;
-            font-family: 'Barlow Condensed', sans-serif;
-            font-weight: 700;
-        }
-        #author{
-            text-align: right;
->>>>>>> c0b5b370eb64aac5a4ce3b40adb75e9c72fb9dd9
         }
     }
     .buttons-box{
         display: flex;
         justify-content: space-between;
-<<<<<<< HEAD
         align-items: center;
         .icon-box{
             width: 32px;
@@ -84,8 +62,6 @@ body{
                 color: white;
             }
         }
-=======
->>>>>>> c0b5b370eb64aac5a4ce3b40adb75e9c72fb9dd9
         .button-box{
             button{
                 @include button($dark-purple,$light-grayish-blue,$dark-purple-light,$dark-purple-strong,700);
@@ -93,7 +69,6 @@ body{
             }
         }
     }
-<<<<<<< HEAD
     @media screen and(min-width:620px){
         max-width: 600px;
         .text-box{
@@ -128,6 +103,3 @@ body{
     opacity: 0.01;
     transition: opacity 500ms ease;
   }
-=======
-}
->>>>>>> c0b5b370eb64aac5a4ce3b40adb75e9c72fb9dd9
