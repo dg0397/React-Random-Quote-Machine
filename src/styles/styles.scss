@@ -103,3 +103,12 @@ body{
     opacity: 0.01;
     transition: opacity 500ms ease;
   }
+
+.wait{
+    padding: 3rem;
+    background-color: rgba(221, 221, 221, 0.2);
+    border-radius: 5px;  
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: rgb(233, 227, 227);
+}

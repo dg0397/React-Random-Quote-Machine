@@ -1,56 +1,52 @@
-import React, { Component } from 'react';
-import Quote from './Quote';
-import ButtonsBox from './ButtonsBox';
+import React, { useState , useEffect } from 'react';
+import Quote from './Quote'; // Quote Block component
+import ButtonsBox from './ButtonsBox'; // Buttons box Component
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; 
+import updateColor from './util/colorUpdate';
 
 
-class Main extends Component {
-    constructor(props){
-        super(props)
-        this.state = {
-            text : "",
-            author : "",
-            loading : false,
-            mounted : false
+
+const Main = ( { loading, quoteGenerator, colorGenerator} ) =>{
+    
+    const [mounted , setMounted] = useState(false);
+    const [quoteObj, setQuote] = useState({});
+    const [color, setColor] = useState('');
+
+    const handleClick = () => {
+        setMounted(false);
+        setQuote(quoteGenerator);
+        setColor(colorGenerator);
+        updateColor(color)
+    }
+    //First side effect after rendering, only is invoked once
+    useEffect( () =>{
+        if(loading){
+            //console.log('here we go')
+            setQuote(quoteGenerator);
+            setMounted(true);
+            setColor(colorGenerator)
         }
-        this.randonQuote = this.randonQuote.bind(this);
-        this.handleClick = this.handleClick.bind(this);
-    }
-    UNSAFE_componentWillReceiveProps(nextProps){
-        console.log(nextProps)
-        this.setState({
-            loading: true
-        },this.randonQuote)
-    }
-    randonQuote(){
-        if(this.state.loading){
-            let num = Math.floor(Math.random() * this.props.quotes.length);
-            this.setState({
-                text: this.props.quotes[num].quote,
-                author: this.props.quotes[num].author,
-                mounted : true
-            })
-            console.log(num)
-        }
-    }
-    handleClick(){
-        this.setState({mounted : false},this.randonQuote);
-    }
-    componentDidUpdate(){
-        if(this.state.mounted){
-            let color = this.props.colorGenerator();
-            document.body.style.background = `${color}`;
-            document.getElementById("text").style.color = `${color}`;
-            document.getElementById("author").style.color = `${color}`;
-            document.querySelector(".icon-box").style.background = `${color}`;
-            document.getElementById("new-quote").style.background = `${color}`
-        }else return;
+    },[loading,colorGenerator,quoteGenerator]);
         
-    }
-    render(){
-        console.log(this.state)
-        let {text,author} = this.state;
-        let quote = this.state.mounted && (<Quote text = {text} author = {author} />)
+    //Second side effect after rendering, is invoked when handleClick is trigger and after the first side-effect
+
+    useEffect( () =>{
+        if(loading && !mounted){
+            //console.log('here we go again')
+            setMounted(!mounted);
+        }
+    },[loading,mounted]);
+
+    //console.log(loading)
+    //console.log(mounted);
+    //console.log(quoteObj);
+    //console.log(color)
+    
+    if(loading){
+        let {quote,author} = quoteObj;
+        //This is for active the transition componenet
+        let quoteBlock = mounted && (<Quote text = {quote} author = {author}/>)
+    
         return(
             <div id="quote-box">
               <ReactCSSTransitionGroup
@@ -58,16 +54,20 @@ class Main extends Component {
               transitionEnterTimeout={800}
               transitionLeaveTimeout={500}
               >
-              {quote}
+                {quoteBlock}
               </ReactCSSTransitionGroup>
               <ButtonsBox 
-              onClick = {this.handleClick}
-              text = {text}
+              onClick = {handleClick}
+              text = {quote}
               author = {author} 
               />
-              <div>
-
-              </div>
+            </div>
+        )
+    }else{
+        // while we wait for the data
+        return (
+            <div className = 'wait'>
+                <h1>Wait a minute....</h1>
             </div>
         )
     }

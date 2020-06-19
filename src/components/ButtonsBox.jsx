@@ -1,11 +1,11 @@
 import React from 'react';
 
-const ButtonsBox = (props) => (
+const ButtonsBox = ({onClick,text,author}) => (
   <div className="buttons-box">
     <div className="icon-box">
       <a
         id="tweet-quote"
-        href= {`https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=${encodeURIComponent(`"${props.text}" ${props.author} `)}`}
+        href= {`https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=${encodeURIComponent(`"${text}" ${author} `)}`}
         target = "_blank"
         rel="noopener noreferrer"
         title="Tweet this quote!"
@@ -16,7 +16,7 @@ const ButtonsBox = (props) => (
     <div className="button-box">
       <button
         id="new-quote"
-        onClick={props.onClick}
+        onClick={onClick}
       >
         New Quotes
       </button>
